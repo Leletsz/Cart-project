@@ -37,6 +37,7 @@ function CartProvider({ children }: CartProviderProps) {
         cartList[indexItem].amount * cartList[indexItem].price;
       setCart(cartList);
       totalResultCart(cartList);
+
       return;
     }
 
