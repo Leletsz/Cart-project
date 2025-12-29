@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import type { ProductProps } from "../home";
 import { CartContext } from "../../contexts/CartContext";
 import { BsCartPlus } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 export default function DetailProduct() {
   const { addItemCart } = useContext(CartContext);
@@ -38,12 +39,15 @@ export default function DetailProduct() {
               currency: "BRL",
             })}
           </strong>
-          <button
-            onClick={() => addItemCart(product)}
-            className="bg-slate-600 px-1.5 rounded text-white font-medium flex items-center justify-center"
-          >
-            <BsCartPlus size={20} color="#FFF" />
-          </button>
+          <Link to={"/cart"} className="">
+            <button
+              onClick={() => addItemCart(product)}
+              className=" cursor-pointer bg-slate-600 p-1 rounded text-white font-medium flex items-center justify-center"
+            >
+              {toast.success("Produto adicionado no carrinho")}
+              <BsCartPlus size={20} color="#FFF" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
